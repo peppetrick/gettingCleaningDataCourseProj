@@ -45,8 +45,8 @@ total_mean_std$activity<-activity_total
 total_mean_std$subject<-subject_total
 #Uses descriptive activity names to name the activities in the data set
 total_mean_std_activity<-merge(total_mean_std,activit_labels,by.x="activity",by.y="Code")
-#5)obtain a tidy data set 
+#5)result data set
 total_melt<-melt(total_mean_std_activity,id=c("Label","subject"),measure.vars=colnames(total_mean_std))
-#12)result data set
+#result data set
 result_data_set<-ddply(total_melt,c("Label","subject","variable"),summarize,mean=mean(value))
 
